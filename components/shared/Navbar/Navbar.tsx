@@ -1,6 +1,7 @@
 import { SignedIn, UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
+import logo from '/assets/images/icon.svg'
 
 export default function Navbar() {
 	return (
@@ -9,12 +10,7 @@ export default function Navbar() {
 			gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12'
 		>
 			<Link href={'/'} className='flex items-center gap-1'>
-				<Image
-					src={'/assets/images/icon.svg'}
-					width={23}
-					height={23}
-					alt='CodeQueryHub'
-				/>
+				<Image src={logo} width={23} height={23} alt='CodeQueryHub' />
 				<p className='h2-bold font-spaceGrotesk text-dark-100 dark:text-light-900 max-sm:hidden'>
 					Code Query <span className='text-primary-500'>Hub</span>
 				</p>
