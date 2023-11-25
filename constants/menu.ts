@@ -1,3 +1,10 @@
+import collectionsIcon from '/assets/icons/collections.svg'
+import communitiesIcon from '/assets/icons/communities.svg'
+import homeIcon from '/assets/icons/home.svg'
+import jobsIcon from '/assets/icons/jobs.svg'
+import questionsIcon from '/assets/icons/questions.svg'
+import tagsIcon from '/assets/icons/tags.svg'
+
 export interface SidebarLink {
 	imgURL: string
 	route: string
@@ -6,37 +13,37 @@ export interface SidebarLink {
 
 export const sidebarLinks: SidebarLink[] = [
 	{
-		imgURL: '/assets/icons/home.svg',
+		imgURL: homeIcon,
 		route: '/',
 		label: 'Home',
 	},
 	{
-		imgURL: '/assets/icons/users.svg',
+		imgURL: communitiesIcon,
 		route: '/community',
 		label: 'Community',
 	},
 	{
-		imgURL: '/assets/icons/star.svg',
+		imgURL: collectionsIcon,
 		route: '/collection',
 		label: 'Collections',
 	},
 	{
-		imgURL: '/assets/icons/suitcase.svg',
-		route: '/jobs',
+		imgURL: jobsIcon,
+		route: '/collection',
 		label: 'Find Jobs',
 	},
 	{
-		imgURL: '/assets/icons/tag.svg',
+		imgURL: tagsIcon,
 		route: '/tags',
 		label: 'Tags',
 	},
+	// {
+	// 	imgURL: '/assets/icons/user.svg',
+	// 	route: '/profile',
+	// 	label: 'Profile',
+	// },
 	{
-		imgURL: '/assets/icons/user.svg',
-		route: '/profile',
-		label: 'Profile',
-	},
-	{
-		imgURL: '/assets/icons/question.svg',
+		imgURL: questionsIcon,
 		route: '/ask-question',
 		label: 'Ask a question',
 	},
