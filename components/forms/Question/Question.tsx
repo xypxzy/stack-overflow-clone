@@ -12,19 +12,27 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { createQuestion } from '@/lib/actions/question.action'
 import { questionsSchema } from '@/lib/validations'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Editor } from '@tinymce/tinymce-react'
 import { X } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
 const type: any = 'create'
 
-export default function Question() {
+interface QuestionProps {
+	mongoUserId: string
+}
+
+export default function Question({ mongoUserId }: QuestionProps) {
 	const editorRef = useRef(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
+	const router = useRouter()
+	const pathname = usePathname()
 
 	const form = useForm<z.infer<typeof questionsSchema>>({
 		resolver: zodResolver(questionsSchema),
@@ -35,12 +43,20 @@ export default function Question() {
 		},
 	})
 
-	function onSubmit(values: z.infer<typeof questionsSchema>) {
+	async function onSubmit(values: z.infer<typeof questionsSchema>) {
 		setIsSubmitting(true)
 		try {
 			// make async call to your API
 			//contain all form data
+			await createQuestion({
+				title: values.title,
+				content: values.explanation,
+				tags: values.tags,
+				author: JSON.parse(mongoUserId),
+				path: pathname,
+			})
 			// navigate to home page
+			router.push('/')
 		} catch (error) {
 		} finally {
 			setIsSubmitting(false)
@@ -134,6 +150,8 @@ export default function Question() {
 												//@ts-ignore
 												(editorRef.current = editor)
 											}
+											onBlur={field.onBlur}
+											onEditorChange={content => field.onChange(content)}
 											initialValue='<p>This is the initial content of the editor.</p>'
 											init={{
 												height: 350,
