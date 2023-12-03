@@ -1,4 +1,8 @@
 export const getTimestamp = (createdAt: Date): string => {
+	if (!(createdAt instanceof Date)) {
+		return 'Invalid date'
+	}
+
 	const currentTime = new Date()
 	const difference = currentTime.getTime() - createdAt.getTime()
 

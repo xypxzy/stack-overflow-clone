@@ -1,7 +1,7 @@
 import Metric from '@/components/shared/Metric/Metric'
 import RenderTags from '@/components/shared/RenderTags/RenderTags'
-import { formatNumber } from '@/lib/formatNumber'
-import { getTimestamp } from '@/lib/getTimestamp'
+import { formatNumber } from '@/lib/utils/formatNumber'
+import { getTimestamp } from '@/lib/utils/getTimestamp'
 import { Eye, MessageCircle, ThumbsUp, User2 } from 'lucide-react'
 import Link from 'next/link'
 
