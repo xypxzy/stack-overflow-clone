@@ -2,7 +2,7 @@ import Metric from '@/components/shared/Metric/Metric'
 import RenderTags from '@/components/shared/RenderTags/RenderTags'
 import { formatNumber } from '@/lib/utils/formatNumber'
 import { getTimestamp } from '@/lib/utils/getTimestamp'
-import { Eye, MessageCircle, ThumbsUp, User2 } from 'lucide-react'
+import { Eye, MessageCircle, ThumbsUp } from 'lucide-react'
 import Link from 'next/link'
 
 type TagType = {
@@ -50,13 +50,7 @@ export default function QuestionCard(props: QuestionCardProps) {
 
 			<div className='flex-between mt-6 w-full flex-wrap gap-3'>
 				<Metric
-					icon={
-						<User2
-							width={16}
-							height={16}
-							className='rounded-full object-contain'
-						/>
-					}
+					icon={author.picture}
 					value={author.name}
 					title={` - asked ${getTimestamp(createdAt)}`}
 					href={`/profile/${author._id}`}
