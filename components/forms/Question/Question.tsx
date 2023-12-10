@@ -65,6 +65,7 @@ export default function Question({ mongoUserId }: QuestionProps) {
 
 	const log = () => {
 		if (editorRef.current) {
+			//@ts-ignore
 			console.log(editorRef.current.getContent())
 		}
 	}
