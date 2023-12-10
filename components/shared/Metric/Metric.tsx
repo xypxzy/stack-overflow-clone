@@ -1,7 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 interface MetricProps {
-	icon: JSX.Element
+	icon: string | JSX.Element
 	value: number | string
 	title: string
 	textStyles?: string
@@ -14,7 +15,17 @@ export default function Metric(props: MetricProps) {
 
 	const metricContent = (
 		<>
-			{icon}
+			{typeof icon === 'string' ? (
+				<Image
+					src={icon}
+					alt='avatar'
+					width={16}
+					height={16}
+					className='rounded-full object-contain'
+				/>
+			) : (
+				icon
+			)}
 			<p className={`${textStyles} flex items-center gap-1`}>
 				{value}
 
