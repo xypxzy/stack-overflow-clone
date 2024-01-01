@@ -22,8 +22,6 @@ interface FilterProps {
 export default function Filter(props: FilterProps) {
 	const { filters, otherClasses, containerClasses } = props
 
-	console.log(filters)
-
 	return (
 		<div className={`relative ${containerClasses}`}>
 			<Select>
